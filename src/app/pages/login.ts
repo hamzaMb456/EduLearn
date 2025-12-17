@@ -34,7 +34,7 @@ import { RouterLink } from '@angular/router';
                 type="email"
                 id="email"
                 name="email"
-                [(ngModel)]="email()"
+                [(ngModel)]="email"
                 placeholder="you@example.com"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 required
@@ -47,10 +47,10 @@ import { RouterLink } from '@angular/router';
                 Password
               </label>
               <input
-                [type]="showPassword() ? 'text' : 'password'"
+                [type]="showPassword ? 'text' : 'password'"
                 id="password"
                 name="password"
-                [(ngModel)]="password()"
+                [(ngModel)]="password"
                 placeholder="Enter your password"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 required
@@ -62,7 +62,7 @@ import { RouterLink } from '@angular/router';
               <input
                 type="checkbox"
                 id="showPassword"
-                (change)="showPassword.set(!showPassword())"
+                (change)="showPassword = !showPassword"
                 class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
               />
               <label for="showPassword" class="ml-2 text-sm text-gray-600 cursor-pointer">
