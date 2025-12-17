@@ -1,25 +1,31 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Component } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: 'app-signup',
+  selector: "app-signup",
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
   template: `
-    <div class="pt-16 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div
+      class="pt-16 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+    >
       <div class="w-full max-w-md">
         <!-- Header -->
         <div class="text-center mb-8">
           <a routerLink="/" class="inline-flex items-center gap-2 mb-6">
-            <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"
+            >
               <span class="text-white font-bold">EL</span>
             </div>
             <span class="text-2xl font-bold text-gray-900">EduLearn</span>
           </a>
           <h1 class="text-3xl font-bold text-gray-900 mb-2">Create Account</h1>
-          <p class="text-gray-600">Join thousands of learners transforming their careers</p>
+          <p class="text-gray-600">
+            Join thousands of learners transforming their careers
+          </p>
         </div>
 
         <!-- Signup Form Card -->
@@ -27,7 +33,10 @@ import { RouterLink } from '@angular/router';
           <form (ngSubmit)="handleSignup()" #signupForm="ngForm">
             <!-- Full Name Input -->
             <div class="mb-6">
-              <label for="fullName" class="block text-sm font-semibold text-gray-900 mb-2">
+              <label
+                for="fullName"
+                class="block text-sm font-semibold text-gray-900 mb-2"
+              >
                 Full Name
               </label>
               <input
@@ -43,7 +52,10 @@ import { RouterLink } from '@angular/router';
 
             <!-- Email Input -->
             <div class="mb-6">
-              <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">
+              <label
+                for="email"
+                class="block text-sm font-semibold text-gray-900 mb-2"
+              >
                 Email Address
               </label>
               <input
@@ -59,7 +71,10 @@ import { RouterLink } from '@angular/router';
 
             <!-- Password Input -->
             <div class="mb-6">
-              <label for="password" class="block text-sm font-semibold text-gray-900 mb-2">
+              <label
+                for="password"
+                class="block text-sm font-semibold text-gray-900 mb-2"
+              >
                 Password
               </label>
               <input
@@ -74,26 +89,41 @@ import { RouterLink } from '@angular/router';
               />
               <!-- Password Strength Indicator -->
               <div class="mt-2 h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div 
+                <div
                   [ngClass]="{
                     'bg-red-500': passwordStrength === 'weak',
                     'bg-yellow-500': passwordStrength === 'medium',
-                    'bg-green-500': passwordStrength === 'strong'
+                    'bg-green-500': passwordStrength === 'strong',
                   }"
-                  [style.width]="passwordStrength === 'weak' ? '33%' : passwordStrength === 'medium' ? '66%' : '100%'"
+                  [style.width]="
+                    passwordStrength === 'weak'
+                      ? '33%'
+                      : passwordStrength === 'medium'
+                        ? '66%'
+                        : '100%'
+                  "
                   class="h-full transition-all duration-300"
                 ></div>
               </div>
               <p class="text-xs text-gray-600 mt-1">
-                <span [ngClass]="{'text-red-500': passwordStrength === 'weak', 'text-yellow-500': passwordStrength === 'medium', 'text-green-500': passwordStrength === 'strong'}">
-                  {{ passwordStrength || 'Enter a password' }}
+                <span
+                  [ngClass]="{
+                    'text-red-500': passwordStrength === 'weak',
+                    'text-yellow-500': passwordStrength === 'medium',
+                    'text-green-500': passwordStrength === 'strong',
+                  }"
+                >
+                  {{ passwordStrength || "Enter a password" }}
                 </span>
               </p>
             </div>
 
             <!-- Confirm Password Input -->
             <div class="mb-2">
-              <label for="confirmPassword" class="block text-sm font-semibold text-gray-900 mb-2">
+              <label
+                for="confirmPassword"
+                class="block text-sm font-semibold text-gray-900 mb-2"
+              >
                 Confirm Password
               </label>
               <input
@@ -115,7 +145,10 @@ import { RouterLink } from '@angular/router';
                 (change)="showPassword = !showPassword"
                 class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
               />
-              <label for="showPassword" class="ml-2 text-sm text-gray-600 cursor-pointer">
+              <label
+                for="showPassword"
+                class="ml-2 text-sm text-gray-600 cursor-pointer"
+              >
                 Show password
               </label>
             </div>
@@ -130,11 +163,22 @@ import { RouterLink } from '@angular/router';
                 class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500 mt-1"
                 required
               />
-              <label for="terms" class="ml-2 text-sm text-gray-600 cursor-pointer">
+              <label
+                for="terms"
+                class="ml-2 text-sm text-gray-600 cursor-pointer"
+              >
                 I agree to the
-                <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold">Terms of Service</a>
+                <a
+                  href="#"
+                  class="text-blue-600 hover:text-blue-700 font-semibold"
+                  >Terms of Service</a
+                >
                 and
-                <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold">Privacy Policy</a>
+                <a
+                  href="#"
+                  class="text-blue-600 hover:text-blue-700 font-semibold"
+                  >Privacy Policy</a
+                >
               </label>
             </div>
 
@@ -162,14 +206,18 @@ import { RouterLink } from '@angular/router';
                 class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
               >
                 <span class="text-xl">🔵</span>
-                <span class="ml-2 text-sm font-medium text-gray-700">Google</span>
+                <span class="ml-2 text-sm font-medium text-gray-700"
+                  >Google</span
+                >
               </button>
               <button
                 type="button"
                 class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
               >
                 <span class="text-xl">👨‍💼</span>
-                <span class="ml-2 text-sm font-medium text-gray-700">GitHub</span>
+                <span class="ml-2 text-sm font-medium text-gray-700"
+                  >GitHub</span
+                >
               </button>
             </div>
           </form>
@@ -179,7 +227,10 @@ import { RouterLink } from '@angular/router';
         <div class="text-center mt-6">
           <p class="text-gray-600">
             Already have an account?
-            <a routerLink="/login" class="text-blue-600 hover:text-blue-700 font-semibold">
+            <a
+              routerLink="/login"
+              class="text-blue-600 hover:text-blue-700 font-semibold"
+            >
               Sign in here
             </a>
           </p>
@@ -187,33 +238,39 @@ import { RouterLink } from '@angular/router';
       </div>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class SignupComponent {
-  fullName = '';
-  email = '';
-  password = '';
-  confirmPassword = '';
+  fullName = "";
+  email = "";
+  password = "";
+  confirmPassword = "";
   showPassword = false;
   agreeToTerms = false;
-  passwordStrength = '';
+  passwordStrength = "";
 
   checkPasswordStrength() {
     if (this.password.length < 6) {
-      this.passwordStrength = 'weak';
+      this.passwordStrength = "weak";
     } else if (this.password.length < 10) {
-      this.passwordStrength = 'medium';
+      this.passwordStrength = "medium";
     } else {
-      this.passwordStrength = 'strong';
+      this.passwordStrength = "strong";
     }
   }
 
   handleSignup() {
-    if (this.fullName && this.email && this.password && this.confirmPassword && this.agreeToTerms) {
+    if (
+      this.fullName &&
+      this.email &&
+      this.password &&
+      this.confirmPassword &&
+      this.agreeToTerms
+    ) {
       if (this.password === this.confirmPassword) {
-        alert('Account created successfully! This is a demo.');
+        alert("Account created successfully! This is a demo.");
       } else {
-        alert('Passwords do not match!');
+        alert("Passwords do not match!");
       }
     }
   }

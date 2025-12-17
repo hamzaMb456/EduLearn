@@ -1,25 +1,31 @@
-import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Component, signal } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
+  selector: "app-login",
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
   template: `
-    <div class="pt-16 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div
+      class="pt-16 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+    >
       <div class="w-full max-w-md">
         <!-- Header -->
         <div class="text-center mb-8">
           <a routerLink="/" class="inline-flex items-center gap-2 mb-6">
-            <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"
+            >
               <span class="text-white font-bold">EL</span>
             </div>
             <span class="text-2xl font-bold text-gray-900">EduLearn</span>
           </a>
           <h1 class="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-          <p class="text-gray-600">Sign in to your account to continue learning</p>
+          <p class="text-gray-600">
+            Sign in to your account to continue learning
+          </p>
         </div>
 
         <!-- Login Form Card -->
@@ -27,7 +33,10 @@ import { RouterLink } from '@angular/router';
           <form (ngSubmit)="handleLogin()" #loginForm="ngForm">
             <!-- Email Input -->
             <div class="mb-6">
-              <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">
+              <label
+                for="email"
+                class="block text-sm font-semibold text-gray-900 mb-2"
+              >
                 Email Address
               </label>
               <input
@@ -43,7 +52,10 @@ import { RouterLink } from '@angular/router';
 
             <!-- Password Input -->
             <div class="mb-2">
-              <label for="password" class="block text-sm font-semibold text-gray-900 mb-2">
+              <label
+                for="password"
+                class="block text-sm font-semibold text-gray-900 mb-2"
+              >
                 Password
               </label>
               <input
@@ -65,14 +77,20 @@ import { RouterLink } from '@angular/router';
                 (change)="showPassword = !showPassword"
                 class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
               />
-              <label for="showPassword" class="ml-2 text-sm text-gray-600 cursor-pointer">
+              <label
+                for="showPassword"
+                class="ml-2 text-sm text-gray-600 cursor-pointer"
+              >
                 Show password
               </label>
             </div>
 
             <!-- Forgot Password Link -->
             <div class="mb-6">
-              <a href="#" class="text-sm text-blue-600 hover:text-blue-700 font-semibold">
+              <a
+                href="#"
+                class="text-sm text-blue-600 hover:text-blue-700 font-semibold"
+              >
                 Forgot your password?
               </a>
             </div>
@@ -91,7 +109,9 @@ import { RouterLink } from '@angular/router';
                 <div class="w-full border-t border-gray-300"></div>
               </div>
               <div class="relative flex justify-center text-sm">
-                <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                <span class="px-2 bg-white text-gray-500"
+                  >Or continue with</span
+                >
               </div>
             </div>
 
@@ -101,14 +121,18 @@ import { RouterLink } from '@angular/router';
                 class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
               >
                 <span class="text-xl">🔵</span>
-                <span class="ml-2 text-sm font-medium text-gray-700">Google</span>
+                <span class="ml-2 text-sm font-medium text-gray-700"
+                  >Google</span
+                >
               </button>
               <button
                 type="button"
                 class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
               >
                 <span class="text-xl">👨‍💼</span>
-                <span class="ml-2 text-sm font-medium text-gray-700">GitHub</span>
+                <span class="ml-2 text-sm font-medium text-gray-700"
+                  >GitHub</span
+                >
               </button>
             </div>
           </form>
@@ -118,7 +142,10 @@ import { RouterLink } from '@angular/router';
         <div class="text-center mt-6">
           <p class="text-gray-600">
             Don't have an account?
-            <a routerLink="/signup" class="text-blue-600 hover:text-blue-700 font-semibold">
+            <a
+              routerLink="/signup"
+              class="text-blue-600 hover:text-blue-700 font-semibold"
+            >
               Sign up here
             </a>
           </p>
@@ -126,16 +153,16 @@ import { RouterLink } from '@angular/router';
       </div>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class LoginComponent {
-  email = '';
-  password = '';
+  email = "";
+  password = "";
   showPassword = false;
 
   handleLogin() {
     if (this.email && this.password) {
-      alert('Login successful! This is a demo.');
+      alert("Login successful! This is a demo.");
     }
   }
 }
