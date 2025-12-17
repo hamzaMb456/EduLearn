@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -34,7 +34,7 @@ import { RouterLink } from '@angular/router';
                 type="text"
                 id="fullName"
                 name="fullName"
-                [(ngModel)]="fullName()"
+                [(ngModel)]="fullName"
                 placeholder="John Doe"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 required
@@ -50,7 +50,7 @@ import { RouterLink } from '@angular/router';
                 type="email"
                 id="email"
                 name="email"
-                [(ngModel)]="email()"
+                [(ngModel)]="email"
                 placeholder="you@example.com"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 required
@@ -63,10 +63,10 @@ import { RouterLink } from '@angular/router';
                 Password
               </label>
               <input
-                [type]="showPassword() ? 'text' : 'password'"
+                [type]="showPassword ? 'text' : 'password'"
                 id="password"
                 name="password"
-                [(ngModel)]="password()"
+                [(ngModel)]="password"
                 placeholder="Create a strong password"
                 (input)="checkPasswordStrength()"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
@@ -76,17 +76,17 @@ import { RouterLink } from '@angular/router';
               <div class="mt-2 h-2 bg-gray-200 rounded-full overflow-hidden">
                 <div 
                   [ngClass]="{
-                    'bg-red-500': passwordStrength() === 'weak',
-                    'bg-yellow-500': passwordStrength() === 'medium',
-                    'bg-green-500': passwordStrength() === 'strong'
+                    'bg-red-500': passwordStrength === 'weak',
+                    'bg-yellow-500': passwordStrength === 'medium',
+                    'bg-green-500': passwordStrength === 'strong'
                   }"
-                  [style.width]="passwordStrength() === 'weak' ? '33%' : passwordStrength() === 'medium' ? '66%' : '100%'"
+                  [style.width]="passwordStrength === 'weak' ? '33%' : passwordStrength === 'medium' ? '66%' : '100%'"
                   class="h-full transition-all duration-300"
                 ></div>
               </div>
               <p class="text-xs text-gray-600 mt-1">
-                <span [ngClass]="{'text-red-500': passwordStrength() === 'weak', 'text-yellow-500': passwordStrength() === 'medium', 'text-green-500': passwordStrength() === 'strong'}">
-                  {{ passwordStrength() || 'Enter a password' }}
+                <span [ngClass]="{'text-red-500': passwordStrength === 'weak', 'text-yellow-500': passwordStrength === 'medium', 'text-green-500': passwordStrength === 'strong'}">
+                  {{ passwordStrength || 'Enter a password' }}
                 </span>
               </p>
             </div>
@@ -97,10 +97,10 @@ import { RouterLink } from '@angular/router';
                 Confirm Password
               </label>
               <input
-                [type]="showPassword() ? 'text' : 'password'"
+                [type]="showPassword ? 'text' : 'password'"
                 id="confirmPassword"
                 name="confirmPassword"
-                [(ngModel)]="confirmPassword()"
+                [(ngModel)]="confirmPassword"
                 placeholder="Confirm your password"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 required
@@ -112,7 +112,7 @@ import { RouterLink } from '@angular/router';
               <input
                 type="checkbox"
                 id="showPassword"
-                (change)="showPassword.set(!showPassword())"
+                (change)="showPassword = !showPassword"
                 class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
               />
               <label for="showPassword" class="ml-2 text-sm text-gray-600 cursor-pointer">
@@ -190,28 +190,27 @@ import { RouterLink } from '@angular/router';
   styles: []
 })
 export class SignupComponent {
-  fullName = signal('');
-  email = signal('');
-  password = signal('');
-  confirmPassword = signal('');
-  showPassword = signal(false);
+  fullName = '';
+  email = '';
+  password = '';
+  confirmPassword = '';
+  showPassword = false;
   agreeToTerms = false;
-  passwordStrength = signal('');
+  passwordStrength = '';
 
   checkPasswordStrength() {
-    const pwd = this.password();
-    if (pwd.length < 6) {
-      this.passwordStrength.set('weak');
-    } else if (pwd.length < 10) {
-      this.passwordStrength.set('medium');
+    if (this.password.length < 6) {
+      this.passwordStrength = 'weak';
+    } else if (this.password.length < 10) {
+      this.passwordStrength = 'medium';
     } else {
-      this.passwordStrength.set('strong');
+      this.passwordStrength = 'strong';
     }
   }
 
   handleSignup() {
-    if (this.fullName() && this.email() && this.password() && this.confirmPassword() && this.agreeToTerms) {
-      if (this.password() === this.confirmPassword()) {
+    if (this.fullName && this.email && this.password && this.confirmPassword && this.agreeToTerms) {
+      if (this.password === this.confirmPassword) {
         alert('Account created successfully! This is a demo.');
       } else {
         alert('Passwords do not match!');
