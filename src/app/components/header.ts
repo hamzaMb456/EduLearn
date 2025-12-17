@@ -22,18 +22,17 @@ import { RouterLink } from '@angular/router';
           <nav class="hidden md:flex items-center gap-8">
             <a href="#courses" class="text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm">Courses</a>
             <a href="#certifications" class="text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm">Certifications</a>
-            <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm">About</a>
-            <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm">Contact</a>
+            <a routerLink="/support" class="text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm cursor-pointer">Support</a>
           </nav>
 
           <!-- CTA Buttons -->
           <div class="flex items-center gap-4">
-            <button class="text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm hidden sm:inline">
+            <a routerLink="/login" class="text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm hidden sm:inline cursor-pointer">
               Sign In
-            </button>
-            <button class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-blue-200 transition-all">
+            </a>
+            <a routerLink="/signup" class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-blue-200 transition-all inline-block">
               Get Started
-            </button>
+            </a>
           </div>
         </div>
       </div>
