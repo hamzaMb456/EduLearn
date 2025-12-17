@@ -129,12 +129,12 @@ import { RouterLink } from '@angular/router';
   styles: []
 })
 export class LoginComponent {
-  email = signal('');
-  password = signal('');
-  showPassword = signal(false);
+  email = '';
+  password = '';
+  showPassword = false;
 
   handleLogin() {
-    if (this.email() && this.password()) {
+    if (this.email && this.password) {
       alert('Login successful! This is a demo.');
     }
   }
