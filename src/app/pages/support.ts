@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-support',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule],
   template: `
     <div class="pt-16 min-h-screen bg-white">
       <!-- Header Section -->
@@ -179,7 +179,7 @@ import { RouterLink } from '@angular/router';
                   type="text"
                   id="contactName"
                   name="contactName"
-                  [(ngModel)]="contactName()"
+                  [(ngModel)]="contactName"
                   placeholder="John Doe"
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                   required
@@ -195,7 +195,7 @@ import { RouterLink } from '@angular/router';
                   type="email"
                   id="contactEmail"
                   name="contactEmail"
-                  [(ngModel)]="contactEmail()"
+                  [(ngModel)]="contactEmail"
                   placeholder="you@example.com"
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                   required
@@ -211,7 +211,7 @@ import { RouterLink } from '@angular/router';
                   type="text"
                   id="subject"
                   name="subject"
-                  [(ngModel)]="subject()"
+                  [(ngModel)]="subject"
                   placeholder="How can we help?"
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                   required
@@ -226,7 +226,7 @@ import { RouterLink } from '@angular/router';
                 <textarea
                   id="message"
                   name="message"
-                  [(ngModel)]="message()"
+                  [(ngModel)]="message"
                   placeholder="Please describe your issue or question..."
                   rows="5"
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none bg-white"
@@ -294,10 +294,10 @@ import { RouterLink } from '@angular/router';
 })
 export class SupportComponent {
   expandedFaq = signal<number | null>(null);
-  contactName = signal('');
-  contactEmail = signal('');
-  subject = signal('');
-  message = signal('');
+  contactName = '';
+  contactEmail = '';
+  subject = '';
+  message = '';
 
   toggleFaq(index: number) {
     if (this.expandedFaq() === index) {
@@ -313,12 +313,12 @@ export class SupportComponent {
   }
 
   handleContactSubmit() {
-    if (this.contactName() && this.contactEmail() && this.subject() && this.message()) {
+    if (this.contactName && this.contactEmail && this.subject && this.message) {
       alert('Thank you for your message! We will get back to you soon.');
-      this.contactName.set('');
-      this.contactEmail.set('');
-      this.subject.set('');
-      this.message.set('');
+      this.contactName = '';
+      this.contactEmail = '';
+      this.subject = '';
+      this.message = '';
     }
   }
 }
